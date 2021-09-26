@@ -21,4 +21,9 @@ jobs:
           activate-environment: refuse-env
           environment-file: etc/refuse-env.yml
           auto-activate-base: false
+  linter:
+    name: Python Linter
+    runs-on: ubuntu-latest
+    steps:
+      -run: bash run_pylint.sh
 
