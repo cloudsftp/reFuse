@@ -25,5 +25,5 @@ jobs:
     name: Python Linter
     runs-on: ubuntu-latest
     steps:
-      -run: bash run_pylint.sh
+      - run: bash run_pylint.sh
 
