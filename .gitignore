@@ -1,0 +1,9 @@
+*.content
+*.json
+*.metadata
+*.pagedata
+*.pdf
+*.rm
+*.zip
+
+__pycache__
