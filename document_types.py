@@ -33,7 +33,7 @@ class Document():
   deleted: bool = False
   lastModified: str = DateType.now()
   lastOpened: str = DateType.now()
-  lastOpenedPage: int = 1
+  lastOpenedPage: int = 0
   metamodified: bool = False
   modified: bool = True
   parent: str = ""
@@ -45,8 +45,7 @@ class Document():
 @dataclass
 class DocumentWrapper():
   document: Document
-  uuid: UUID = uuid.uuid1()
-  parent_wrapper: Optional[Any] = None
+  uuid: UUID = uuid.uuid4()
   child_wrappers: List[Any] = field(default_factory=list)
 
   def to_json(self) -> json:
