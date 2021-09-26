@@ -39,4 +39,4 @@ dependencies:
     - marshmallow==3.13.0
     - marshmallow-enum==1.5.1
     - typing-inspect==0.7.1
-prefix: /home/fabi/anaconda3/envs/refuse-base
+prefix: /home/fabi/anaconda3/envs/refuse-env

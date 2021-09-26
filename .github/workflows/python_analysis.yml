@@ -17,14 +17,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Conda Env
-        uses: conda-incubator/setup-miniconda@v2.1.1
-        with:
-          activate-environment: refuse-env
-          environment-file: etc/refuse-env.yml
-          auto-activate-base: false
+
+      - name: Setup Conda
+        uses: s-weigand/setup-conda@v1.0.7
+
       - name: Activate Conda Env
-        run: conda activate refuse-env
+        run: conda env update --file etc/refuse-env.yml --name base
+
       - name: Linter
         run: bash run_pylint.sh
 
