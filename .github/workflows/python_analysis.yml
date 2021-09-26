@@ -23,7 +23,7 @@ jobs:
           activate-environment: refuse-env
           environment-file: etc/refuse-env.yml
           auto-activate-base: false
-      - run: conda list
+      - run: conda env list
       - name: Linter
         run: bash run_pylint.sh
 
