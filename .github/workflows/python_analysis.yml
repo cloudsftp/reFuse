@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2.1.1
         with:
-          activate-environment: refuse-base
-          environment-file: etc/refuse-base-env.conda
+          activate-environment: refuse-env
+          environment-file: etc/refuse-env.yml
           auto-activate-base: false
 

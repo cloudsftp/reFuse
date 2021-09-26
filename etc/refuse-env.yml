@@ -1,4 +1,4 @@
-name: refuse-base
+name: refuse-env
 channels:
   - defaults
 dependencies:
