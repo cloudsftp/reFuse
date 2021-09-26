@@ -8,7 +8,6 @@ on:
       - hotfix/*
       - feature/*
     tags:
-      - *
   pull_requests:
 
 jobs:
