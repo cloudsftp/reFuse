@@ -12,18 +12,17 @@ on:
 
 jobs:
   setup:
-    name: Setup Conda Env
+    name: Python Analysis Job
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: conda-incubator/setup-miniconda@v2.1.1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Conda Env
+        uses: conda-incubator/setup-miniconda@v2.1.1
         with:
           activate-environment: refuse-env
           environment-file: etc/refuse-env.yml
           auto-activate-base: false
-  linter:
-    name: Python Linter
-    runs-on: ubuntu-latest
-    steps:
-      - run: bash run_pylint.sh
+      - name: Linter
+        run: bash run_pylint.sh
 
