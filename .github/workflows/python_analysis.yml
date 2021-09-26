@@ -8,7 +8,7 @@ on:
       - hotfix/*
       - feature/*
     tags:
-  pull_requests:
+  pull_request:
 
 jobs:
   setup:
