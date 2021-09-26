@@ -15,7 +15,7 @@ jobs:
     name: Setup Conda Env
     runs-on: ubuntu-latest
     steps:
-      - run: ls etc
+      - run: ls
       - uses: conda-incubator/setup-miniconda@v2.1.1
         with:
           activate-environment: refuse-base
