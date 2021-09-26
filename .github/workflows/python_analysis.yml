@@ -27,3 +27,6 @@ jobs:
       - name: Linter
         run: bash run_pylint.sh
 
+      - name: Type Checker
+        run: bash run_mypy.sh
+
