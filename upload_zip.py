@@ -5,6 +5,7 @@ import json
 import shutil
 from os import makedirs, listdir
 from os.path import isfile, isdir, join, basename
+from typing import Optional
 from argparse import ArgumentParser
 from zipfile import ZipFile
 from uuid import UUID
@@ -58,8 +59,11 @@ def upload_document(document_wrapper: DocumentWrapper):
                 filename = join(src_dir_name, filename)
                 shutil.copy(filename, dest_dir_name)
 
-def register_parent(document_wrapper: DocumentWrapper, parent_dir_uuid_str: str):
-    document_wrapper.parent_uuid = UUID(parent_dir_uuid_str)
+def register_parent(document_wrapper: DocumentWrapper, parent_dir_uuid_str: Optional[str]):
+    if parent_dir_uuid_str and parent_dir_uuid_str != '':
+        document_wrapper.parent_uuid = UUID(parent_dir_uuid_str)
+    else:
+        document_wrapper.parent_uuid = None
 
 def main(zip_file_name: str, parent_dir_uuid_str: str):
     if not zip_file_name.endswith('.zip'):

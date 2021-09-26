@@ -2,11 +2,12 @@
 
 from typing import List, Optional
 
-from dataclasses import dataclass, field, asdict
 from datetime import datetime
 import uuid
 from uuid import UUID
 import json
+from dataclasses import dataclass, field
+from dataclasses_json import dataclass_json
 
 class DateType():
     @staticmethod
@@ -23,6 +24,7 @@ class DateType():
         r_timestamp = DateType.convert_to_remarkable_timestamp(timestamp)
         return str(r_timestamp)
 
+@dataclass_json
 @dataclass
 class Document(): # pylint: disable=too-many-instance-attributes
     visibleName: str # pylint: disable=invalid-name
@@ -49,10 +51,13 @@ class DocumentWrapper():
     def parent_uuid(self) -> Optional[UUID]:
         return self._parent_uuid
 
-    @property.setter
-    def parent_uuid(self, parent_uuid: UUID): # pylint: disable=function-redefined
+    @parent_uuid.setter
+    def parent_uuid(self, parent_uuid: Optional[UUID]):
         self._parent_uuid = parent_uuid
-        self.document.parent = str(parent_uuid)
+        if parent_uuid:
+            self.document.parent = str(parent_uuid)
+        else:
+            self.document.parent = ''
 
     def to_json(self) -> json.JSONEncoder:
-        return json.loads(str(asdict(self.document)))
+        return json.loads(self.document.to_json()) # type: ignore
