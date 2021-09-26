@@ -15,9 +15,10 @@ jobs:
     name: Setup Conda Env
     runs-on: ubuntu-latest
     steps:
+      - uses: actiona/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2.1.1
         with:
           activate-environment: refuse-base
-          environment-file: ../etc/refuse-base-env.conda
+          environment-file: etc/refuse-base-env.conda
           auto-activate-base: false
 
