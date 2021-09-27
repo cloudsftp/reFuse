@@ -1,5 +1,5 @@
 # reFuse
-![version](https://img.shields.io/badge/version-1.0-blue)
+![version](https://img.shields.io/badge/version-1.0p1-blue)
 [![LICENSE](https://img.shields.io/badge/LICENSE-GPL_v3-blue)](https://www.gnu.org/licenses/)
 [![rm1](https://img.shields.io/badge/rM1-not_tested-orange)](https://remarkable.com/store/remarkable)
 [![rm2](https://img.shields.io/badge/rM2-supported-green)](https://remarkable.com/store/remarkable-2)
