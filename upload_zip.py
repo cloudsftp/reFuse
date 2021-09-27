@@ -2,7 +2,6 @@
 
 import re
 import json
-from remarkable import REMARKABLE_DATA_DIR, restart_xochitl
 import shutil
 from os import makedirs, listdir
 from os.path import isfile, isdir, join, basename
@@ -11,6 +10,7 @@ from argparse import ArgumentParser
 from zipfile import ZipFile
 from uuid import UUID
 
+from remarkable import REMARKABLE_DATA_DIR, restart_xochitl
 from document_types import Document, DocumentWrapper
 
 TMP_DIR = '/tmp/reFuse'
