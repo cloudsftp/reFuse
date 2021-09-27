@@ -10,10 +10,10 @@ from argparse import ArgumentParser
 from zipfile import ZipFile
 from uuid import UUID
 
+from remarkable import REMARKABLE_DATA_DIR, restart_xochitl
 from document_types import Document, DocumentWrapper
 
 TMP_DIR = '/tmp/reFuse'
-REMARKABLE_DATA_DIR = '/mnt/reMarkable/.local/share/remarkable/xochitl'
 
 def open_zip_notebook(zip_file_name: str) -> DocumentWrapper:
     notebook_name = zip_file_name.replace('.zip', '')
@@ -65,21 +65,23 @@ def register_parent(document_wrapper: DocumentWrapper, parent_dir_uuid_str: Opti
     else:
         document_wrapper.parent_uuid = None
 
-def main(zip_file_name: str, parent_dir_uuid_str: str):
+def main(zip_file_name: str, parent_dir_uuid_str: str, hostname: str):
     if not zip_file_name.endswith('.zip'):
         raise NotImplementedError(f'"{zip_file_name}" does not end with .zip')
 
     document_wrapper = open_zip_notebook(zip_file_name)
     register_parent(document_wrapper, parent_dir_uuid_str)
     upload_document(document_wrapper)
+    restart_xochitl(hostname)
 
 
 if __name__ == "__main__":
     parser = ArgumentParser(
         description='Upload a zip file with raw reMarkable notebook data to reMarkable tablet'
     )
-    parser.add_argument('--name', '-n', type=str, required=True)
-    parser.add_argument('--parent-dir', '-p', type=str, default='')
+    parser.add_argument('--hostname', '-s', type=str, required=True)
+    parser.add_argument('--parent-dir', '-p', type=str, default='', metavar='UUID')
+    parser.add_argument('zipfile', nargs=1)
 
     args = parser.parse_args()
-    main(args.name, args.parent_dir)
+    main(args.name, args.parent_dir, args.hostname)

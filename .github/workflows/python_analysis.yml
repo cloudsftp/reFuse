@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - develop
-      - master
       - hotfix/*
-      - feature/*
     tags:
   pull_request:
 
