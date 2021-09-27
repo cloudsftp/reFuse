@@ -1,4 +1,4 @@
-name: Python Analysis Workflow
+name: Static Python Check | develop
 
 on:
   push:
